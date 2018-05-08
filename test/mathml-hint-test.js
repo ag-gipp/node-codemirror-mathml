@@ -6,34 +6,34 @@
 
   namespace = "mathml-hint_";
 
-  testData =[
+  testData = [
     {
       name: "mathml-element",
-      value: "<htm",
-      list: ["<mathml"]
+      value: "<mat",
+      list: ["<math", "<matrix", "<matrixrow"]
     },
     {
       name: "element-close",
-      value: "<a href='#a'>\n</",
-      list: ["</a>"]
+      value: "<math>\n</",
+      list: ["</math>"]
     },
     {
-      name: "linkref-attribute",
-      value: "<link hreflang='z",
-      from: Pos(0,"<link hreflang=".length),
-      list: ["'zh'","'za'","'zu'"]
+      name: "id-attribute",
+      value: "<csymbol i",
+      from: Pos(0, "<csymbol i".length - 1),
+      list: ["id"]
     },
     {
-      name: "mathml-completion",
-      value: "<mathml>\n",
-      list: ["<head","<body","</mathml>"]
+      name: "times-completion",
+      value: "<tim",
+      list: ["<times"]
     }
   ];
 
 
   function escapeHtmlList(o) {
     return '<code>' +
-      JSON.stringify(o.list,null,2)
+      JSON.stringify(o.list, null, 2)
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;") +
       '</code>'
@@ -46,42 +46,63 @@
       cm.setValue(spec.value);
       cm.setCursor(spec.cursor);
       var completion = CodeMirror.hint.mathml(cm);
-      if (!deepCompare(completion.list, spec.list))
+      if (!deepCompare(completion.list, spec.list)) {
         throw new Failure("Wrong completion results. Got" +
-          escapeHtmlList(completion) +" but expected" +
+          escapeHtmlList(completion) + " but expected" +
           escapeHtmlList(spec));
-      eqCharPos(completion.from, spec.from,'from-failed');
+      }
+      eqCharPos(completion.from, spec.from, 'from-failed');
       eqCharPos(completion.to, spec.to, 'to-failed');
     }, {
       value: spec.value,
-      mode: spec.mode || "text/html"
+      mode: spec.mode || "text/xml"
     });
   }
 
-  testData.forEach(function (value) {
+  testData.forEach(function(value) {
     // Use sane defaults
     var lines = value.value.split(/\n/);
-    value.to = value.pos || Pos(lines.length-1, lines[lines.length-1].length);
-    value.from = value.from || Pos(lines.length-1,0);
+    value.to = value.pos || Pos(lines.length - 1, lines[lines.length - 1].length);
+    value.from = value.from || Pos(lines.length - 1, 0);
     value.cursor = value.cursor || value.to;
-    var name = value.name ||value.value;
-    test(name,value) });
-
+    var name = value.name || value.value;
+    test(name, value);
+  });
 
 
   function deepCompare(a, b) {
-    if (a === b) return true;
-    if (!(a && typeof a === "object") ||
-      !(b && typeof b === "object")) return false;
-    var array = Array.isArray(a);
-    if (Array.isArray(b) !== array) return false;
-    if (array) {
-      if (a.length !== b.length) return false;
-      for (var i = 0; i < a.length; i++) if (!deepCompare(a[i], b[i])) return false
-    } else {
-      for (var p in a) if (!(p in b) || !deepCompare(a[p], b[p])) return false;
-      for (var p in b) if (!(p in a)) return false
+    if (a === b) {
+      return true;
     }
-    return true
+    if (!(a && typeof a === "object") ||
+      !(b && typeof b === "object")) {
+      return false;
+    }
+    var array = Array.isArray(a);
+    if (Array.isArray(b) !== array) {
+      return false;
+    }
+    if (array) {
+      if (a.length !== b.length) {
+        return false;
+      }
+      for (var i = 0; i < a.length; i++) {
+        if (!deepCompare(a[i], b[i])) {
+          return false;
+        }
+      }
+    } else {
+      for (var p in a) {
+        if (!(p in b) || !deepCompare(a[p], b[p])) {
+          return false;
+        }
+      }
+      for (var p in b) {
+        if (!(p in a)) {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 })();
