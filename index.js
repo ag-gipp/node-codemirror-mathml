@@ -27,7 +27,7 @@ function populate(obj) {
 
 populate(s);
 for (let tag in data) {
-  if (data.hasOwnProperty(tag) && data[tag] != s) {
+  if (data.hasOwnProperty(tag) && data[tag] !== s) {
     populate(data[tag]);
   }
 }
@@ -38,6 +38,7 @@ function mathmlHint(cm, options) {
   const local = { schemaInfo: data };
   if (options) {
     for (const opt in options) {
+      // noinspection JSUnfilteredForInLoop
       local[opt] = options[opt];
     }
   }
