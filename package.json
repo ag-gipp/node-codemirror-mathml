@@ -1,0 +1,23 @@
+{
+  "name": "codemirror-mathml",
+  "version": "1.0.0",
+  "description": "A plugin for CodeMirror. It extends the CodeMirror XML autocompletion plugin and provides auto completion for MathML.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ag-gipp/node-codemirror-mathml.git"
+  },
+  "keywords": [
+    "mathml",
+    "codemirror"
+  ],
+  "author": "Moritz Schubotz",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ag-gipp/node-codemirror-mathml/issues"
+  },
+  "homepage": "https://github.com/ag-gipp/node-codemirror-mathml#readme"
+}
