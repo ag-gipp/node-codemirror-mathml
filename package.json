@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/ag-gipp/node-codemirror-mathml#readme",
   "dependencies": {
+    "blint": "^1.0.3",
     "codemirror": "^5.37.0",
     "jsdom-global": "^3.0.2",
     "mathml-tag-names": "^2.1.0",

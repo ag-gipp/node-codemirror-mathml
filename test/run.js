@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+// var ok = require("./lint").ok;
+
 var files = new (require('node-static').Server)();
 
 var server = require('http').createServer(function (req, res) {
