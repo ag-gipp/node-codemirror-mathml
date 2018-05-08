@@ -1,1 +1,3 @@
--r jsdom-global/register
+--require test/support/require.js
+--preload test/support/preload.js
+--require-main test/support/requireMain.js

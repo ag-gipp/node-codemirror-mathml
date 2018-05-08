@@ -3,7 +3,8 @@
 "use strict";
 
 const CodeMirror = require('codemirror/lib/codemirror.js');
-require('codemirror/mode/xml/xml.js');
+require('codemirror/addon/hint/xml-hint');
+require('codemirror/mode/xml/xml.js'); // required?
 const tagNames = require('mathml-tag-names');
 const s = { attrs: {} }; // Simple tag, reused for a whole lot of tags
 const data = {};
