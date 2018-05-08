@@ -1,16 +1,16 @@
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
 // Distributed under an MIT license: http://codemirror.net/LICENSE
 
-
 (function(mod) {
   if (typeof exports == "object" && typeof module == "object") // CommonJS
-    mod(require("node_modules/codemirror/lib/codemirror"), require("node_modules/codemirror/addon/xml-hint"));
+    mod(require("./node_modules/codemirror/lib/codemirror"), require("./node_modules/codemirror/addon/hint/xml-hint"));
    else if (typeof define == "function" && define.amd) // AMD
-     define(["node_modules/codemirror/lib/codemirror", "node_modules/codemirror/addon/xml-hint"], mod);
+     define(["node_modules/codemirror/lib/codemirror", "node_modules/codemirror/addon/hint/xml-hint"], mod);
   else // Plain browser env
     mod(CodeMirror);
 })(function(CodeMirror) {
   "use strict";
+
   var tagNames = [
     "abs",
     "and",
@@ -216,14 +216,14 @@
     "xor"
   ];
 
-  const s = { attrs: {} }; // Simple tag, reused for a whole lot of tags
-  const data = {};
-  for (const t of tagNames) {
+  var s = { attrs: {} }; // Simple tag, reused for a whole lot of tags
+  var data = {};
+  for (var t of tagNames) {
     data[t] = s;
   }
 
 
-  const globalAttrs = {
+  var globalAttrs = {
     id: null,
     xref: null,
   };
@@ -254,6 +254,5 @@
     }
     return CodeMirror.hint.xml(cm, local);
   }
-
   CodeMirror.registerHelper("hint", "mathml", mathmlHint);
 });
