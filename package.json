@@ -4,7 +4,8 @@
   "description": "A plugin for CodeMirror. It extends the CodeMirror XML autocompletion plugin and provides auto completion for MathML.",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/electron-mocha/bin/electron-mocha --renderer test"
+    "test": "./node_modules/electron-mocha/bin/electron-mocha --renderer test",
+    "coverage": "istanbul cover npm run test"
   },
   "repository": {
     "type": "git",
