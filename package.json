@@ -23,19 +23,19 @@
   "homepage": "https://github.com/ag-gipp/node-codemirror-mathml#readme",
   "dependencies": {
     "blint": "^1.0.3",
-    "codemirror": "^5.37.0",
+    "codemirror": "^5.47.0",
     "jsdom-global": "^3.0.2",
-    "mathml-tag-names": "^2.1.0",
-    "supertest": "^3.0.0"
+    "mathml-tag-names": "^2.1.1",
+    "supertest": "^4.0.2"
   },
   "devDependencies": {
-    "coveralls": "^3.0.1",
-    "electron": "^2.0.0",
-    "electron-mocha": "^6.0.2",
+    "coveralls": "^3.0.3",
+    "electron": "^5.0.2",
+    "electron-mocha": "^8.0.2",
     "http": "0.0.0",
-    "jsdom": "^11.10.0",
-    "mocha": "^5.1.1",
-    "node-static": "^0.7.10",
+    "jsdom": "^15.1.1",
+    "mocha": "^6.1.4",
+    "node-static": "^0.7.11",
     "phantomjs-prebuilt": "^2.1.16",
     "webpage": "^0.3.0"
   }
