@@ -1,6 +1,6 @@
 {
   "name": "codemirror-mathml",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A plugin for CodeMirror. It extends the CodeMirror XML autocompletion plugin and provides auto completion for MathML.",
   "main": "index.js",
   "scripts": {
